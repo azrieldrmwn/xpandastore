@@ -14,197 +14,183 @@
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-      padding: 20px;
+      padding: 15px;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+    h1 {
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    @media (max-width: 768px) {
-      .product-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 576px) {
-      .product-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-      }
-
-      .product-card {
-        padding: 10px;
-      }
-
-      .buy-now {
-        font-size: 0.75rem;
-        padding: 6px 10px;
-      }
-
-      h5 {
-        font-size: 0.9rem;
-      }
-
-      p {
-        font-size: 0.75rem;
-      }
-    }
-
-    .product-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      transition: all 0.3s ease;
+    .filter-buttons {
       display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    .product-image-container {
-      position: relative;
-      width: 100%;
-      padding-top: 100%;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-
-    .product-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .buy-now {
-      background-color: #4361ee;
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      transition: background-color 0.3s ease;
-      margin-top: auto;
-    }
-
-    .buy-now:hover {
-      background-color: #3f37c9;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
     }
 
     .nav-button.active {
       background-color: #f72585 !important;
       color: #fff !important;
     }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 kolom horizontal saat mobile */
+      }
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 8px;
+      font-size: 0.75rem;
+    }
+
+    .product-image-container {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background-color: #eee;
+      border-radius: 6px;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-title {
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-top: 8px;
+    }
+
+    .product-price {
+      color: #d90429;
+      font-weight: bold;
+      margin: 4px 0;
+    }
+
+    .product-desc {
+      color: #666;
+      font-size: 0.7rem;
+      flex-grow: 1;
+    }
+
+    .buy-now {
+      background-color: #4361ee;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 6px 10px;
+      border-radius: 4px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-now:hover {
+      background-color: #3f37c9;
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1 class="text-center fw-bold mb-4">Produk Kami</h1>
+  <h1>Produk Kami</h1>
 
-    <!-- Navbar Kategori -->
-    <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-      <button class="btn btn-outline-secondary nav-button active" onclick="filterProducts('all')">Semua</button>
-      <button class="btn btn-outline-secondary nav-button" onclick="filterProducts('mika')">Mika</button>
-      <button class="btn btn-outline-secondary nav-button" onclick="filterProducts('elektronik')">Elektronik</button>
-      <button class="btn btn-outline-secondary nav-button" onclick="filterProducts('custom')">Custom</button>
-      <button class="btn btn-outline-secondary nav-button" onclick="filterProducts('resin')">Resin</button>
+  <!-- Filter Kategori -->
+  <div class="filter-buttons">
+    <button class="btn btn-outline-secondary nav-button active" onclick="filterProducts('all')">Semua</button>
+    <button class="btn btn-outline-secondary nav-button" onclick="filterProducts('mika')">Mika</button>
+    <button class="btn btn-outline-secondary nav-button" onclick="filterProducts('elektronik')">Elektronik</button>
+    <button class="btn btn-outline-secondary nav-button" onclick="filterProducts('custom')">Custom</button>
+    <button class="btn btn-outline-secondary nav-button" onclick="filterProducts('resin')">Resin</button>
+  </div>
+
+  <!-- Etalase Produk -->
+  <div class="product-grid">
+    <!-- Mika -->
+    <div class="product-card" data-category="mika">
+      <div class="product-image-container">
+        <img src="etalase/motor/soulgt/1.jpg" alt="Mika Soul GT" class="product-image">
+      </div>
+      <div class="product-title">MIKA STOPLAMP SOUL GT 125</div>
+      <div class="product-price">Rp 150.000</div>
+      <div class="product-desc">Mika stoplamp custom soul gt 125 bening plug and play.</div>
+      <a href="mika.html" class="buy-now">Lihat Detail</a>
     </div>
 
-    <!-- Produk -->
-    <div class="product-grid" id="productGrid">
-
-      <!-- Mika -->
-      <div class="product-card-container" data-category="mika">
-        <div class="product-card p-3">
-          <div class="product-image-container">
-            <img src="etalase/motor/soulgt/1.jpg" class="product-image" alt="Mika Stoplamp">
-          </div>
-          <h5 class="fw-semibold mt-3">MIKA STOPLAMP SOUL GT 125</h5>
-          <p class="text-danger fw-bold">Rp 150.000</p>
-          <p class="text-muted small">Mika stoplamp custom soul gt 125 bening plug and play.</p>
-          <a href="mika.html" class="buy-now">Lihat Detail</a>
-        </div>
+    <div class="product-card" data-category="mika">
+      <div class="product-image-container">
+        <img src="etalase/motor/crf/1.jpg" alt="Mika CRF" class="product-image">
       </div>
+      <div class="product-title">MIKA STOPLAMP CRF</div>
+      <div class="product-price">Rp 150.000</div>
+      <div class="product-desc">Mika stoplamp CRF 150L bening plug and play.</div>
+      <a href="mika.html" class="buy-now">Lihat Detail</a>
+    </div>
 
-      <div class="product-card-container" data-category="mika">
-        <div class="product-card p-3">
-          <div class="product-image-container">
-            <img src="etalase/motor/crf/1.jpg" class="product-image" alt="Mika Stoplamp">
-          </div>
-          <h5 class="fw-semibold mt-3">MIKA STOPLAMP CRF</h5>
-          <p class="text-danger fw-bold">Rp 150.000</p>
-          <p class="text-muted small">Mika stoplamp CRF 150L bening plug and play.</p>
-          <a href="mika.html" class="buy-now">Lihat Detail</a>
-        </div>
+    <!-- Elektronik -->
+    <div class="product-card" data-category="elektronik">
+      <div class="product-image-container">
+        <img src="1.png" alt="Charger USB" class="product-image">
       </div>
+      <div class="product-title">Charger USB Fast Charging</div>
+      <div class="product-price">Rp 75.000</div>
+      <div class="product-desc">Charger cepat dengan 2 port USB, mendukung fast charging.</div>
+      <a href="elektronik.html" class="buy-now">Lihat Detail</a>
+    </div>
 
-      <!-- Elektronik -->
-      <div class="product-card-container" data-category="elektronik">
-        <div class="product-card p-3">
-          <div class="product-image-container">
-            <img src="1.png" class="product-image" alt="Charger USB">
-          </div>
-          <h5 class="fw-semibold mt-3">Charger USB Fast Charging</h5>
-          <p class="text-danger fw-bold">Rp 75.000</p>
-          <p class="text-muted small">Charger cepat dengan 2 port USB, mendukung fast charging.</p>
-          <a href="elektronik.html" class="buy-now">Lihat Detail</a>
-        </div>
+    <!-- Custom -->
+    <div class="product-card" data-category="custom">
+      <div class="product-image-container">
+        <img src="cetak.jpg" alt="Cetakan Custom" class="product-image">
       </div>
+      <div class="product-title">Cetakan Custom Supra/CRF</div>
+      <div class="product-price">Rp 900.000</div>
+      <div class="product-desc">Cetakan custom stoplamp motor Supra GTR & CRF 150L.</div>
+      <a href="custom.html" class="buy-now">Lihat Detail</a>
+    </div>
 
-      <!-- Custom -->
-      <div class="product-card-container" data-category="custom">
-        <div class="product-card p-3">
-          <div class="product-image-container">
-            <img src="cetak.jpg" class="product-image" alt="Cetakan Custom">
-          </div>
-          <h5 class="fw-semibold mt-3">CETAKAN LAMPU SUPRA GTR / CRF</h5>
-          <p class="text-danger fw-bold">Rp 900.000</p>
-          <p class="text-muted small">Cetakan custom stoplamp motor Supra GTR & CRF 150L.</p>
-          <a href="custom.html" class="buy-now">Lihat Detail</a>
-        </div>
+    <!-- Resin -->
+    <div class="product-card" data-category="resin">
+      <div class="product-image-container">
+        <img src="1.png" alt="Kerajinan Resin" class="product-image">
       </div>
-
-      <!-- Resin -->
-      <div class="product-card-container" data-category="resin">
-        <div class="product-card p-3">
-          <div class="product-image-container">
-            <img src="1.png" class="product-image" alt="Resin Art">
-          </div>
-          <h5 class="fw-semibold mt-3">Kerajinan Resin Unik</h5>
-          <p class="text-danger fw-bold">Rp 120.000</p>
-          <p class="text-muted small">Dekorasi resin estetik untuk hiasan rumah & meja kerja.</p>
-          <a href="resin.html" class="buy-now">Lihat Detail</a>
-        </div>
-      </div>
-
+      <div class="product-title">Kerajinan Resin Unik</div>
+      <div class="product-price">Rp 120.000</div>
+      <div class="product-desc">Dekorasi resin estetik untuk hiasan rumah & meja kerja.</div>
+      <a href="resin.html" class="buy-now">Lihat Detail</a>
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Script Filter Produk -->
+  <!-- Script -->
   <script>
     function filterProducts(category) {
-      document.querySelectorAll('.product-card-container').forEach(card => {
+      document.querySelectorAll('.product-card').forEach(card => {
         const match = category === 'all' || card.dataset.category === category;
-        card.style.display = match ? 'block' : 'none';
+        card.style.display = match ? 'flex' : 'none';
       });
 
       document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
       document.querySelector(`.nav-button[onclick*="${category}"]`).classList.add('active');
     }
   </script>
+
 </body>
 </html>
