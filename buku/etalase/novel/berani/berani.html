@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BERANI TIDAK DISUKAI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* ========== VARIABEL & RESET ========== */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --shopee: #FF6B00;
+      --warranty: #dc2626;
+      --success: #10b981;
+      --border-radius: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Segoe UI',system-ui,sans-serif;
+      background:#f1f5f9;
+      color:var(--dark);
+      line-height:1.6;
+      font-size:14px;
+    }
+    .container{max-width:1200px;margin:auto;padding:0 15px;}
+
+    /* HEADER */
+    .header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:12px 0;position:sticky;top:0;z-index:100;}
+    .header-container{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto;padding:0 10px;}
+    .back-btn{color:var(--dark);display:flex;align-items:center;gap:6px;text-decoration:none;font-size:15px;}
+    .back-btn:hover{color:var(--primary);}
+    .logo{font-size:18px;font-weight:700;color:var(--primary);text-decoration:none;}
+
+    /* PRODUK CONTAINER */
+    .product-container{display:flex;flex-direction:column;background:#fff;border-radius:var(--border-radius);box-shadow:0 4px 12px rgba(0,0,0,.08);margin:20px 0;overflow:hidden;}
+    .image-gallery{padding:15px;}
+    .main-image{width:100%;height:280px;object-fit:contain;background:#f8fafc;border-radius:var(--border-radius);cursor:pointer;transition:var(--transition);}
+    .main-image:hover{transform:scale(1.02);}
+    .thumbnail-container{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
+    .thumbnail{width:100%;height:70px;object-fit:cover;border-radius:6px;cursor:pointer;background:#f8fafc;transition:var(--transition);border:2px solid transparent;}
+    .thumbnail:hover,.thumbnail.active{border-color:var(--primary);transform:scale(1.05);}
+
+    .product-info{padding:20px;}
+    .product-title{font-size:18px;font-weight:700;margin-bottom:8px;}
+    .product-rating{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+    .stars{color:var(--secondary);}
+    .review-count{color:var(--gray);font-size:13px;}
+    .product-price{display:flex;align-items:center;gap:12px;margin-bottom:15px;}
+    .current-price{font-size:22px;font-weight:700;color:var(--primary);}
+    .original-price{font-size:15px;color:var(--gray);text-decoration:line-through;}
+
+    /* SPESIFIKASI */
+    .product-description{margin:16px 0 8px;font-weight:700;font-size:1.05rem;}
+    .spec-card{background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+    .spec-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+    .spec-item{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border:1px solid #f1f1f1;border-radius:10px;background:#fafafa;}
+    .spec-label{font-weight:600;color:#333;}
+    .spec-value{color:#555;text-align:right;}
+
+    /* BUTTONS */
+    .action-buttons{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+    .btn{padding:12px;border-radius:var(--border-radius);font-weight:600;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;transition:var(--transition);}
+    .btn-shopee{background:var(--shopee);color:#fff;}
+    .btn-shopee:hover{background:#e05d00;transform:translateY(-2px);}
+    .btn-primary{background:var(--primary);color:#fff;}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);}
+
+    /* META */
+    .product-meta{border-top:1px solid var(--gray-light);padding-top:16px;margin-top:20px;font-size:13px;color:var(--gray);}
+    .meta-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;}
+    .meta-icon{color:var(--primary);margin-top:2px;}
+
+    /* RESPONSIVE */
+    @media(min-width:768px){
+      .product-container{flex-direction:row;}
+      .image-gallery{width:50%;}
+      .product-info{width:50%;}
+      .main-image{height:350px;}
+      .thumbnail{height:80px;}
+      .action-buttons{flex-direction:row;}
+      .btn{flex:1;}
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="header-container">
+    <a href="../../../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali</a>
+    <a href="#" class="logo">SAMUDRA BUKU</a>
+    <div style="width:70px;"></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="product-container">
+    <!-- Galeri Gambar -->
+    <div class="image-gallery">
+      <img src="1.jpeg" alt="Cover Buku" class="main-image" id="mainImage">
+      <div class="thumbnail-container">
+        <img src="1.jpeg" alt="Thumbnail 1" class="thumbnail active">
+        <img src="2.jpeg" alt="Thumbnail 2" class="thumbnail">
+        <img src="3.jpeg" alt="Thumbnail 3" class="thumbnail">
+      </div>
+    </div>
+
+    <!-- Info Produk -->
+    <div class="product-info">
+      <h1 class="product-title">BERANI TIDAK DISUKAI</h1>
+      <div class="product-rating">
+        <div class="stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <span class="review-count">(2 ulasan)</span>
+      </div>
+      <div class="product-price">
+        <span class="current-price">Rp 42,000</span>
+        <span class="original-price">Rp 62,000</span>
+      </div>
+
+      <!-- Spesifikasi -->
+      <p class="product-description">Spesifikasi Produk</p>
+      <div class="spec-card">
+        <ul class="spec-list">
+          <li class="spec-item"><span class="spec-label">Judul</span><span class="spec-value">Berani tidak disukai</span></li>
+          <li class="spec-item"><span class="spec-label">Penulis</span><span class="spec-value">Ichiro Kishimi & Fumitake</span></li>
+          <li class="spec-item"><span class="spec-label">Penerbit</span><span class="spec-value">Gramedia pustaka utama</span></li>
+          <li class="spec-item"><span class="spec-label">Jenis</span><span class="spec-value">Kumpulan Puisi – Sastra Modern</span></li>
+          <li class="spec-item"><span class="spec-label">Cover</span><span class="spec-value">Softcover</span></li>
+          <li class="spec-item"><span class="spec-label">Ukuran</span><span class="spec-value">±13 × 20 cm</span></li>
+          <li class="spec-item"><span class="spec-label">Halaman</span><span class="spec-value">±334-352 hlm</span></li>
+          <li class="spec-item"><span class="spec-label">Bahasa</span><span class="spec-value">Indonesia</span></li>
+          <li class="spec-item"><span class="spec-label">Berat</span><span class="spec-value">±200–300 g</span></li>
+        </ul>
+      </div>
+
+      <!-- Tombol Aksi -->
+      <div class="action-buttons">
+        <a href="https://shopee.co.id/produk-anda" target="_blank" class="btn btn-shopee"><i class="fas fa-shopping-cart"></i> BELI DI SHOPEE</a>
+        <a href="https://wa.me/6281234567890?text=Halo%20saya%20mau%20beli%20buku" target="_blank" class="btn btn-primary"><i class="fas fa-bolt"></i> BELI VIA ADMIN</a>
+      </div>
+
+      <!-- Meta -->
+      <div class="product-meta">
+        <div class="meta-item"><i class="fas fa-truck meta-icon"></i> Gratis Ongkir Jawa</div>
+        <div class="meta-item"><i class="fas fa-shield-alt meta-icon"></i> Garansi rusak diganti</div>
+        <div class="meta-item"><i class="fas fa-check-circle meta-icon"></i> Stok tersedia (satuan / grosir)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Ganti gambar utama saat thumbnail diklik
+  document.querySelectorAll('.thumbnail').forEach(thumb=>{
+    thumb.addEventListener('click',function(){
+      document.getElementById('mainImage').src=this.src;
+      document.querySelectorAll('.thumbnail').forEach(t=>t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
