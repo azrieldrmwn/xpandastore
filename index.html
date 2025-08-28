@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAMUDRA BUKU</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>SAMUDRA BUKU</header>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <h1>SAMUDRA BUKU</h1>
+    <p>Temukan berbagai produk buku yang menarik dengan harga terbaik!</p>
+  </div>
+
+  <div class="container">
+    <div id="produk-list">Loading produk...</div>
+  </div>
+
+  <script>
+    function loadProduk(file) {
+      fetch(file)
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("produk-list").innerHTML = data;
+        });
+    }
+
+    // Saat halaman pertama kali dibuka -> langsung load mika-lampu
+    window.onload = function() {
+      loadProduk("buku/index.html");
+    };
+  </script>
+</body>
+</html>
